@@ -1,0 +1,30 @@
+{
+  "name": "gulp-text-editor-snippets",
+  "version": "1.0.0",
+  "description": "Auto-generate atom and sublime text snippets",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha ./test/index.js"
+  },
+  "keywords": [
+    "gulpplugin",
+    "atom",
+    "sublime",
+    "editor",
+    "snippets"
+  ],
+  "author": "John Leonard <thejohnleonard@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.8",
+    "mkdirp": "^0.5.1",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "chai-string": "^1.4.0",
+    "mocha": "^3.4.2",
+    "should": "^11.2.1"
+  }
+}
