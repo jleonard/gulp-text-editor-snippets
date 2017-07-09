@@ -13,15 +13,17 @@ const PLUGIN_NAME = 'gulp-text-editor-snipppets';
 function gulpin(obj) {
 
   if(obj.hasOwnProperty('dest')){
-    gutil.log('dest',obj.dest);
     mkdirp(obj.dest, function (err) {
       if (err){
         throw new gutil.PluginError(PLUGIN_NAME, err);
       }else{
+
         mkdirp(path.join(obj.dest,'sublime-snippets'), function(err){});
+
         mkdirp(path.join(obj.dest,'atom-snippets'), function(err){
           mkdirp(path.join(obj.dest,'atom-snippets','snippets'), function(err){});
         });
+
       }
     });
   }else{
@@ -29,6 +31,8 @@ function gulpin(obj) {
   }
 
   return through.obj(function(file, enc, cb) {
+
+
 
     var str = file.contents.toString();
     var arr = str.split('---');
@@ -54,7 +58,6 @@ function gulpin(obj) {
 
     }
     
-
     var snippetFileName = meta.hasOwnProperty('tab') ? meta.tab : 'snippet-' + new Date().getTime();
 
     fs.writeFile(path.join(obj.dest,'sublime-snippets',snippetFileName + '.sublime-snippet'), makeSublimeSnippet(meta,content), (err) => {
@@ -69,8 +72,6 @@ function gulpin(obj) {
       }
     });
   
-
-    //gutil.log(makeTag('snippet','<![CDATA[Type your snippet here]]>'));
     cb(null, file);
     return;
 

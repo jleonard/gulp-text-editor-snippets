@@ -29,7 +29,7 @@ describe('gulp-text-editor-snipppets: base functionality', function () {
   it('should throw an error if a destination folder is not specified', function (done) {
 
     try {
-      gulp.src('test/fixtures/**.snippet', {buffer: false}).pipe(snips({}));
+      gulp.src('./fixtures/**/*.snippet').pipe(snips({}));
     }
     catch (error) {
      done();
@@ -39,10 +39,10 @@ describe('gulp-text-editor-snipppets: base functionality', function () {
   });
 
   it('should create the destination path',function(done){
-    var path = './test/path/to/foo';
-    gulp.src('./test/fixtures/**.snippet', {buffer: false}).pipe(snips({'dest':path}));
+    var path = './test/tools/';
+    gulp.src('./fixtures/**/*.snippet').pipe(snips({'dest':path}));
     if (!fs.existsSync(path)) {
-      throw ("Logging File Does Not Exist");
+      throw ("destination path was not created");
     }else{
       done();
     }
